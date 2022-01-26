@@ -50,86 +50,123 @@ class x11x1x11btn {
         </svg>
         `,
         hide: /* html */`
-        <div>`
+        <div>
+        `
     };
 
     static styles () {
         const styleSheet = document.createElement('style');
-        const identifier = 'x11x1x11'
+        const identifier = x11x1x11btn.conf.identifier;
 
         styleSheet.innerText = /* CSS */ `
             :root {
-                --x11x1x11-btn-size: 9vh;
-                --x11x1x11-svg-size: calc(var(--x11x1x11-btn-size) * .7);
-                --x11x1x11-svg-pos: 
+                --${identifier}-btn-size: 9vh;
+                --${identifier}-svg-size: calc(var(--${identifier}-btn-size) * .7);
+                --${identifier}-svg-pos: 
                     calc(
-                        calc(var(--x11x1x11-btn-size) / 2) - calc(var(--x11x1x11-svg-size) / 2)
+                        calc(var(--${identifier}-btn-size) / 2) - calc(var(--${identifier}-svg-size) / 2)
                         );
-                --x11x1x11-border-radius: calc(var(--x11x1x11-btn-size) * .2);
-                --x11x1x11-panel-border-radius: 
+                --${identifier}-border-radius: calc(var(--${identifier}-btn-size) * .2);
+                --${identifier}-panel-border-radius: 
                     0 
-                    var(--x11x1x11-border-radius) 
-                    var(--x11x1x11-border-radius)
+                    var(--${identifier}-border-radius) 
+                    var(--${identifier}-border-radius)
                     0;
-                --x11x1x11-btn-margin: calc(var(--x11x1x11-btn-size) * .06);
-                --x11x1x11-btn-margin-lg: calc(var(--x11x1x11-btn-margin) * 2);
-                --x11x1x11-btn-bs: ${x11x1x11btn.conf.btnColor};
-                --x11x1x11-panel-bg: ${x11x1x11btn.conf.btnColor}e6;
+                --${identifier}-btn-margin: calc(var(--${identifier}-btn-size) * .06);
+                --${identifier}-btn-margin-lg: calc(var(--${identifier}-btn-margin) * 2);
+                --${identifier}-btn-bs: ${x11x1x11btn.conf.btnColor};
+                --${identifier}-panel-bg: ${x11x1x11btn.conf.btnColor}e6;
+                --${identifier}-burger-height: 
+                    calc(
+                        var(--${identifier}-btn-size) * 0.05
+                    );
+                --${identifier}-burger-width:
+                        calc(
+                            var(--${identifier}-btn-size) * .5
+                        );
+                --${identifier}-burger-compressed:
+                    calc(
+                        var(--${identifier}-btn-size) * .1
+                    );
             }
 
-            div.${identifier}panel {
-                background: var(--x11x1x11-panel-bg);
+            .${identifier}panel {
+                background: var(--${identifier}-panel-bg);
                 position: fixed;
-                bottom: calc(var(--x11x1x11-svg-pos) * 2);
+                bottom: calc(var(--${identifier}-svg-pos) * 2);
                 left: 0;
-                padding: var(--x11x1x11-btn-margin-lg);
-                border-radius: var(--x11x1x11-panel-border-radius);
+                padding: var(--${identifier}-btn-margin-lg);
+                border-radius: var(--${identifier}-panel-border-radius);
                 margin: 0;
+                display: flex;
+                justify-content: flex-start;
             }
-            div.${identifier}panel.active {}
+            .${identifier}panel:not(.active) {
+                padding: var(--${identifier}-btn-margin-lg) 0;
+            }
 
-            a.${identifier}btn:not(.hide) {
+            .${identifier}btn:not(.hide) {
                 display: none;
             }
-
-            .active a.${identifier}btn:not(.hide) {
+            .active .${identifier}btn:not(.hide) {
                 display: inline-block;
+            }
+            .${identifier}btn.hide {
+                width: calc(var(--${identifier}-btn-size) / 4);
+                box-shadow: none;
+                transition: width .1s 0s ease-in-out;
+            }
+            .${identifier}panel:hover .${identifier}btn.hide {
+                width: var(--${identifier}-btn-size);
+            }
+            .active .${identifier}btn.hide {
+                width: var(--${identifier}-btn-size);
+                margin:
+                    var(--${identifier}-btn-margin)
+                    var(--${identifier}-btn-margin-lg);
+                box-shadow: 0 0 5px 5px var(--${identifier}-panel-bg) inset;
             }
 
             a.${identifier}btn,
             button.${identifier}btn {
                 display: inline-block;
                 box-sizing: border-box;
-                border-radius: var(--x11x1x11-border-radius);;
+                border-radius: var(--${identifier}-border-radius);;
                 border: none;
-                box-shadow: 0 0 5px 5px var(--x11x1x11-panel-bg) inset;
-                height: var(--x11x1x11-btn-size);
-                width: var(--x11x1x11-btn-size);
+                box-shadow: 0 0 5px 5px var(--${identifier}-panel-bg) inset;
+                height: var(--${identifier}-btn-size);
+                width: var(--${identifier}-btn-size);
                 background: transparent;
                 position: relative;
                 padding: 0;
                 margin: 
-                    var(--x11x1x11-btn-margin)
-                    var(--x11x1x11-btn-margin-lg);
+                    var(--${identifier}-btn-margin)
+                    var(--${identifier}-btn-margin-lg);
                 vertical-align: middle;
                 cursor: pointer;
             }
 
             a.${identifier}btn svg,
             button.${identifier}btn svg {
-                height: var(--x11x1x11-svg-size);
+                height: var(--${identifier}-svg-size);
                 transform-origin: center;
                 transform: scale(.8);
             }
             a.${identifier}btn svg {
                 position: absolute;
-                top: var(--x11x1x11-svg-pos);
-                left: var(--x11x1x11-svg-pos);
+                top: var(--${identifier}-svg-pos);
+                left: var(--${identifier}-svg-pos);
             }
             a.${identifier}btn.back svg {
                 transform: scale(.75);
             }
 
+            button.${identifier}btn.hide div {
+                height: var(--${identifier}-burger-height);
+                width: var(--${identifier}-burger-compressed);
+                top: calc(50% - 2.5%);
+                left: 25%;
+            }
             button.${identifier}btn.hide div,
             button.${identifier}btn.hide div::before,
             button.${identifier}btn.hide div::after {  
@@ -137,18 +174,13 @@ class x11x1x11btn {
                 margin: auto;
                 border-radius: 2px;
                 position: absolute;
-            }
-            button.${identifier}btn.hide div {
-                height: 5%;
-                width: 50%;
-                top: calc(50% - 2.5%);
-                left: 25%;
+                transition: width .1s 0s ease-in-out;
             }
             button.${identifier}btn.hide div::before,
             button.${identifier}btn.hide div::after {
                 content: '';
-                height: 100%;
-                width: 100%;
+                width: var(--${identifier}-burger-compressed);
+                height: var(--${identifier}-burger-height);
                 left: 0;
             }
             button.${identifier}btn.hide div::before {
@@ -156,6 +188,16 @@ class x11x1x11btn {
             }
             button.${identifier}btn.hide div::after {
                 top: -350%;
+            }
+            .${identifier}panel:hover .${identifier}btn.hide div,
+            .${identifier}panel:hover .${identifier}btn.hide div::before,
+            .${identifier}panel:hover .${identifier}btn.hide div::after {
+                width: var(--${identifier}-burger-width);
+            }
+            .active button.${identifier}btn.hide div,
+            .active button.${identifier}btn.hide div::before,
+            .active button.${identifier}btn.hide div::after {
+                width: var(--${identifier}-burger-width);
             }
         `;
 
