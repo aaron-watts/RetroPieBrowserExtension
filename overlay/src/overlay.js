@@ -50,7 +50,7 @@ class x11x1x11btn {
         </svg>
         `,
         hide: /* html */`
-        <div>
+        <div></div>
         `
     };
 
