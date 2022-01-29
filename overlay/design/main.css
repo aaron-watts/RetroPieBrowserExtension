@@ -1,0 +1,93 @@
+:root {
+    --btn-size: 9vh;
+    --btn-bg: #585f66e6;
+    --btn-fg: #fff;
+
+    --panel-bottom: var(--btn-size);
+
+    --menu-compact: calc(var(--btn-size) * .3);
+    --menu-burger-h: calc(var(--menu-compact) * .3);
+    --menu-burger-w: calc(var(--btn-size) * .6);
+    --menu-burger-left: calc(
+        calc(var(--menu-compact) * .5)
+        -
+        calc(var(--menu-burger-h) * .5) 
+    );
+    --expanded-menu-burger-left: calc(
+        calc(var(--btn-size) * .5)
+        -
+        calc(var(--menu-burger-w) * .5) 
+    );
+    --menu-burger-top: calc(
+        calc(var(--btn-size) * .5)
+        -
+        calc(var(--menu-burger-h) * .5) 
+    );
+    --menu-burger-offset: calc(
+        var(--menu-burger-top)
+        -
+        calc(var(--btn-size) * .7)
+    );
+}
+
+
+.panel {
+    position: fixed;
+    bottom: var(--panel-bottom);
+    left: 0;
+    background: transparent;
+}
+
+.panel .btn {
+    height: var(--btn-size);
+    width: var(--menu-compact);
+
+    display: inline-block;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.panel .btn.menu {
+    background: var(--btn-bg);
+    position: relative;
+}
+.panel .btn.menu div,
+.panel .btn.menu div:before,
+.panel .btn.menu div:after {
+    background: var(--btn-fg);
+    width: var(--menu-burger-h);
+    height: var(--menu-burger-h);
+    border-radius: calc(var(--menu-burger-h) * .5);
+    margin: 0 auto;
+
+    position: absolute;
+}
+.panel .btn.menu div {
+    left: var(--menu-burger-left);
+    top: var(--menu-burger-top);
+}
+.panel .btn.menu div:before,
+.panel .btn.menu div:after {
+    content: '';
+    left: 0;
+}
+.panel .btn.menu div:before {
+    top: var(--menu-burger-offset);
+}
+.panel .btn.menu div:after {
+    bottom: var(--menu-burger-offset);
+}
+
+.panel .btn.menu:hover {
+    width: var(--btn-size);
+}
+.panel .btn.menu:hover div {
+    left: var(--expanded-menu-burger-left);
+}
+.panel .btn.menu:hover div,
+.panel .btn.menu:hover div:before,
+.panel .btn.menu:hover div:after {
+    width: var(--menu-burger-w);
+}
+
