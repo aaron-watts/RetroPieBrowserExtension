@@ -2,10 +2,23 @@ const express = require('express');
 const app = express();
 const PORT = 3030;
 
-const { ls } = require('./utils/unix');
-const catchAsync = require('./utils/catchAsync');
+const engine = require('ejs-mate');
 
-app.get('/', async (req, res) => res.send('Welcome to my server!'));
+const { ls } = require('./utils/unix');
+const { format } = require('./utils/helpers');
+
+const db = require('./db');
+db.setupDatabase();
+
+app.engine('ejs', engine);
+app.set('views', `${__dirname}/views`);
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => res.render('index'));
+
+app.get('/source', (req, res) => {
+    return res.render('source');
+})
 
 app.get('/ls', async (req, res) => {
     const data = await ls();
@@ -13,11 +26,15 @@ app.get('/ls', async (req, res) => {
     if (data.stderr) return res.send(data.stderr)
 
     return res.send(
-        data.stdout
-            .split('\n')
-            .filter(file => file.length)
-            .map(file => file.replace('/home/aaron/Downloads/', ''))
+        format(data.stdout)
     );
+});
+
+app.get('/sources/add', async (req, res) => {
+    // const result = await db.addSource(['Google', 'https://www.duckduckgo.com']);
+    // console.log(result);
+    
+    res.send('DONE');
 });
 
 app.listen(

@@ -5,8 +5,7 @@ const config = require('../../config.json');
 const user = config.user;
 const home = `${config.home}/${user}/`;
 
-module.exports.ls = async (dir='Downloads/', filetype='*.zip') => {
-    console.log('begin ls');
+module.exports.ls = async (dir='Downloads/', filetype='') => {
     const { stdout=undefined, stderr=undefined } = await exec(`ls ${home}${dir}${filetype}`)
         .catch(err => err);
 
