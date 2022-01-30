@@ -275,7 +275,7 @@ class x11x1x11btn {
             {
                 className: 'home',
                 icon: x11x1x11btn.icons.home,
-                href: 'https://localhost:3030'
+                href: 'http://127.0.0.1:3030'
             }
         ],
         [
