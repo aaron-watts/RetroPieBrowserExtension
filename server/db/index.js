@@ -8,13 +8,21 @@ const dbPromise = open({
     driver: sqlite3.Database
 });
 
+const formatQuery = (data) => {
+    return `(${data.map(i => ` ${i}`).join(',')}) 
+        VALUES (${data.map(i => ` ?`).join(',')} )`;
+};
+
 module.exports.setupDatabase = async () => {
     const db = await dbPromise;
     await db.migrate();
 };
 
-module.exports.addSource = async (source) => {
+module.exports.addOne = async (table, data) => {
     const db = await dbPromise;
-    const sql = 'INSERT INTO source (name, url) VALUES (?, ?);';
-    return await db.run(sql, ['one', 'two']);
+
+    const fields = Object.keys(data);
+    const query = `INSERT INTO ${table} ${formatQuery(fields)}`;
+
+    const result = await db.run(query, fields.map(i => data[i]));
 };

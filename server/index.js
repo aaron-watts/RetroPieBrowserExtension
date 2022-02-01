@@ -7,18 +7,21 @@ const engine = require('ejs-mate');
 const { ls } = require('./utils/unix');
 const { format } = require('./utils/helpers');
 
+const sourceRoute = require('./routes/source');
+
 const db = require('./db');
 db.setupDatabase();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.engine('ejs', engine);
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => res.render('index'));
+app.use('/source', sourceRoute);
 
-app.get('/source', (req, res) => {
-    return res.render('source');
-})
+app.get('/', (req, res) => res.render('index'));
 
 app.get('/ls', async (req, res) => {
     const data = await ls();
