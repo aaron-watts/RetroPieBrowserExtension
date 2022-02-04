@@ -1,11 +1,25 @@
 const express = require('express');
 const app = express();
 const PORT = 3030;
+const path = require('path');
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
+const engine = require('ejs-mate');
+app.engine('ejs', engine);
+app.set('views', `${__dirname}/views`);
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 const { ls } = require('./utils/unix');
-const catchAsync = require('./utils/catchAsync');
 
-app.get('/', async (req, res) => res.send('Welcome to my server!'));
+const sourceRoute = require('./routes/source');
+app.use('/source', sourceRoute);
+
+app.get('/', (req, res) => res.render('index'));
 
 app.get('/ls', async (req, res) => {
     const data = await ls();
