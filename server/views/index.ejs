@@ -5,16 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroPie Home</title>
+
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <h1>RetroPie Home!!!</h1>
+    <h1>RP Browse</h1>
+
     <ul>
         <li>
             <a href="/source">New Source</a>
         </li>
-        <li>
-            <a href="/source/edit">Edit Source</a>
-        </li>
     </ul>
+
+    <% for (let source of sources) { %>
+    
+        <div class="source" id="id<%= source.id %> ">
+            <div>
+                <a href="<%= source.url %> ">
+                    <h2 class="name"><%= source.name %> </h2>
+                </a>
+                <a href="<%= source.url %> ">
+                    <small class="url"><%= source.url %> </small>
+                </a>
+            </div>
+        
+            <div class="options btn btn-round">
+                <div class="dot"></div>
+                <div class="menu">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                </div>
+            </div>
+        </div>
+    <% } %> 
+    <!-- <script src="/javascript/app.js"></script> -->
 </body>
 </html>

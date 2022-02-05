@@ -23,7 +23,13 @@ const { format } = require('./utils/helpers');
 const sourceRoute = require('./routes/source');
 app.use('/source', sourceRoute);
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', async (req, res) => {
+    const db = require('./db');
+
+    const sources = await db.getData('source');
+
+    res.render('index', { sources });
+});
 
 app.get('/ls', async (req, res) => {
     const data = await ls();

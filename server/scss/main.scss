@@ -1,0 +1,111 @@
+@font-face {
+    font-family: genos;
+    src: url('/fonts/genos/Genos-VariableFont_wght.ttf');
+}
+
+$fg-color: #151583;
+$fg-accent: lighten($fg-color, 10%);
+$fg-glow: lighten($fg-color, 25%);
+$bg-color: #e6e6e6;
+$card-bg: #f2f2f2;
+$dot-size: .25rem;
+$btn-size: 2rem;
+
+:root {
+    font-family: "genos", sans-serif;
+    font-size: 24px;
+    color: $fg-color;
+    letter-spacing: .08rem;
+}
+
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: $fg-color;
+}
+a:hover {
+    color: $fg-glow;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: $bg-color;
+}
+
+.btn {
+    cursor: pointer;
+    height: $btn-size;
+
+    &-round {
+        border-radius: 50%;
+        width: $btn-size;
+    }
+}
+
+.source {
+    background: $card-bg;
+    margin: 1rem;
+    padding: 0 .5rem;
+    display: flex;
+    border-radius: .2rem;
+    // justify-content: space-between;
+
+
+    & .name {
+        margin: 0;
+    }
+
+    & .url {
+        font-style: italic;
+    }
+
+    & .options {
+        background: $card-bg;
+        align-self: center;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background: $bg-color;
+
+            & .dot,
+            & .dot::before,
+            & .dot::after {
+                background: $fg-glow;
+            }
+        }
+
+        & .dot {
+            background: $fg-accent;
+            height: $dot-size;
+            width: $dot-size;
+            border-radius: 50%;
+            position: relative;
+
+            &::before {
+                content: '';
+                background: $fg-color;
+                height: $dot-size;
+                width: $dot-size;
+                border-radius: 50%;
+                position: absolute;
+                top: -.4rem;
+            }
+
+            &::after {
+                content: '';
+                background: $fg-color;
+                height: $dot-size;
+                width: $dot-size;
+                border-radius: 50%;
+                position: absolute;
+                top: .4rem;
+            }
+        }
+    }
+}

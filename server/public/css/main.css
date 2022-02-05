@@ -1,0 +1,114 @@
+@font-face {
+  font-family: genos;
+  src: url("/fonts/genos/Genos-VariableFont_wght.ttf");
+}
+
+:root {
+  font-family: "genos", sans-serif;
+  font-size: 24px;
+  color: #151583;
+  letter-spacing: .08rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #151583;
+}
+
+a:hover {
+  color: #3838df;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #e6e6e6;
+}
+
+.btn {
+  cursor: pointer;
+  height: 2rem;
+}
+
+.btn-round {
+  border-radius: 50%;
+  width: 2rem;
+}
+
+.source {
+  background: #f2f2f2;
+  margin: 1rem;
+  padding: 0 .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: .2rem;
+}
+
+.source .name {
+  margin: 0;
+}
+
+.source .url {
+  font-style: italic;
+}
+
+.source .options {
+  background: #f2f2f2;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.source .options:hover {
+  background: #e6e6e6;
+}
+
+.source .options:hover .dot,
+.source .options:hover .dot::before,
+.source .options:hover .dot::after {
+  background: #3838df;
+}
+
+.source .options .dot {
+  background: #1c1caf;
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 50%;
+  position: relative;
+}
+
+.source .options .dot::before {
+  content: '';
+  background: #151583;
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 50%;
+  position: absolute;
+  top: -.4rem;
+}
+
+.source .options .dot::after {
+  content: '';
+  background: #151583;
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 50%;
+  position: absolute;
+  top: .4rem;
+}
+/*# sourceMappingURL=main.css.map */

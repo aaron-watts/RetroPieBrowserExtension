@@ -26,3 +26,10 @@ module.exports.addOne = async (table, data) => {
 
     const result = await db.run(query, fields.map(i => data[i]));
 };
+
+module.exports.getData = async (table) => {
+    const db = await dbPromise;
+    const query = `SELECT * FROM ${table}`
+
+    return await db.all(query);
+}
