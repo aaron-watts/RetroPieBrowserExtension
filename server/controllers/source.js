@@ -37,5 +37,5 @@ module.exports.delete = async (req, res) => {
     
     const result = await db.deleteOne('source', id)
 
-    res.send(result);
+    return res.redirect('/');
 };
