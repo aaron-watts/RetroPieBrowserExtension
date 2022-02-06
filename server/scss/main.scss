@@ -1,6 +1,66 @@
 @import 'var';
 @import 'config';
 
+.safe:hover {
+    color: $green;
+    border-color: $green;
+    outline: $green;
+    background: $card-bg;
+}
+
+.danger:hover {
+    color: $red;
+    border-color: $red;
+    outline: $red;
+    background: $card-bg;
+}
+
+.confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #44444444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transform-origin: center;
+
+    &.show {
+        transform: scale(1);
+    }
+
+    & .modal {
+        background: $card-bg;
+        height: 4rem;
+        padding: .6rem 1rem;
+        border-radius: .2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        & .controls {
+            display: flex;
+            justify-content: center;
+
+            & button {
+                margin: .6rem 1rem;
+
+                height: 1.4rem;
+                width: 3rem;
+
+                cursor: pointer;
+
+                box-shadow: none;
+
+                transition: all .3s 0s ease-in-out;
+            }
+        }
+    }
+}
+
 .source {
     background: $card-bg;
     border-radius: .2rem;
@@ -83,41 +143,49 @@
         }
 
         &:hover {
-            & .dot,
-            & .dot::before,
-            & .dot::after {
+            & .dot div,
+            & .dot div::before,
+            & .dot div::after {
                 background: $fg-glow;
                 transform: translateY(0);
             }
         }
 
         & .dot {
-            background: $fg-accent;
+            width: $toggle-width;
+            height: $btn-size;
+            display: flex;
+            align-items: center;
             cursor: pointer;
-            height: $dot-size;
-            width: $dot-size;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 1rem;
 
-            &::before,
-            &::after {
-                content: '';
-                background: $fg-color;
+            & div {
+                background: $fg-accent;
                 height: $dot-size;
                 width: $dot-size;
                 border-radius: 50%;
-                position: absolute;
-                transition: transform .6s 0s ease-in-out;
-                transform-origin: center;
-            }
+                position: relative;
+                margin: 0 1rem;
 
-            &::before {
-                transform: translateY($dot-offset);
+                &::before,
+                &::after {
+                    content: '';
+                    background: $fg-color;
+                    height: $dot-size;
+                    width: $dot-size;
+                    border-radius: 50%;
+                    position: absolute;
+                    transition: transform .6s 0s ease-in-out;
+                    transform-origin: center;
+                }
+
+                &::before {
+                    transform: translateY($dot-offset);
+                }
+                &::after {
+                    transform: translateY(-$dot-offset)
+                }
             }
-            &::after {
-                transform: translateY(-$dot-offset)
-            }
+            
         }
     }
 }

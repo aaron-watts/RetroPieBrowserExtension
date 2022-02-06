@@ -54,7 +54,6 @@
                 <div class="menu">
                     <a class="edit" href="/source/<%= source.id %>">
                         <%- include('icons/pencil-square.svg') %>
-                        <!-- <img class="edit" src="/icons/pencil-square.svg" alt=""> -->
                     </a>
                     <form 
                         action="/source/<%= source.id %>?_method=DELETE"
@@ -63,13 +62,23 @@
                     >
                         <button class="delete" type="submit">
                             <%- include('icons/trash3.svg') %>
-                            <!-- <img src="/icons/trash3.svg" alt=""> -->
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     <% } %> 
-    <script src="/javascript/app.js"></script>
+    
+    <div class="confirm">
+        <div class="modal">
+            <div class="message"></div>
+            <div class="controls">
+                <button class="danger">Cancel</button>
+                <button class="safe">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/javascript/app.js"></script>
 </body>
 </html>

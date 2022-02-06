@@ -27,6 +27,16 @@ a:hover {
     color: $fg-glow;
 }
 
+button {
+    font-family: "genos", sans-serif;
+    font-size: .8rem;
+    padding-bottom: .1rem;
+    border: 1px solid grey;
+    border-radius: .1rem;
+    color: grey;
+    font-weight: 500;
+}
+
 .svg-icon {
     width: 1em;
     height: 1em;

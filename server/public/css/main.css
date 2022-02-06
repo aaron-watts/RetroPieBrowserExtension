@@ -30,6 +30,16 @@ a:hover {
   color: #3838df;
 }
 
+button {
+  font-family: "genos", sans-serif;
+  font-size: .8rem;
+  padding-bottom: .1rem;
+  border: 1px solid grey;
+  border-radius: .1rem;
+  color: grey;
+  font-weight: 500;
+}
+
 .svg-icon {
   width: 1em;
   height: 1em;
@@ -44,6 +54,83 @@ a:hover {
 .svg-icon circle {
   stroke: #4691f6;
   stroke-width: 1;
+}
+
+.safe:hover {
+  color: #66aa66;
+  border-color: #66aa66;
+  outline: #66aa66;
+  background: #f2f2f2;
+}
+
+.danger:hover {
+  color: #bb4444;
+  border-color: #bb4444;
+  outline: #bb4444;
+  background: #f2f2f2;
+}
+
+.confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #44444444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.confirm.show {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.confirm .modal {
+  background: #f2f2f2;
+  height: 4rem;
+  padding: .6rem 1rem;
+  border-radius: .2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.confirm .modal .controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.confirm .modal .controls button {
+  margin: .6rem 1rem;
+  height: 1.4rem;
+  width: 3rem;
+  cursor: pointer;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all .3s 0s ease-in-out;
+  transition: all .3s 0s ease-in-out;
 }
 
 .source {
@@ -160,17 +247,28 @@ a:hover {
   color: #bb4444;
 }
 
-.source .options:hover .dot,
-.source .options:hover .dot::before,
-.source .options:hover .dot::after {
+.source .options:hover .dot div,
+.source .options:hover .dot div::before,
+.source .options:hover .dot div::after {
   background: #3838df;
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
 
 .source .options .dot {
-  background: #1c1caf;
+  width: 2.5rem;
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
+}
+
+.source .options .dot div {
+  background: #1c1caf;
   height: 0.25rem;
   width: 0.25rem;
   border-radius: 50%;
@@ -178,7 +276,7 @@ a:hover {
   margin: 0 1rem;
 }
 
-.source .options .dot::before, .source .options .dot::after {
+.source .options .dot div::before, .source .options .dot div::after {
   content: '';
   background: #151583;
   height: 0.25rem;
@@ -193,12 +291,12 @@ a:hover {
           transform-origin: center;
 }
 
-.source .options .dot::before {
+.source .options .dot div::before {
   -webkit-transform: translateY(0.5rem);
           transform: translateY(0.5rem);
 }
 
-.source .options .dot::after {
+.source .options .dot div::after {
   -webkit-transform: translateY(-0.5rem);
           transform: translateY(-0.5rem);
 }
