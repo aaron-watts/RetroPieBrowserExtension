@@ -9,18 +9,25 @@
 </head>
 
 <body>
-    <form action="/source" method="POST">
+    <%= source ? 'Source Detected' : 'No source detected!' %> 
+
+    <form 
+        action="/source<%= source ? `/${source.id}?_method=PUT` : '' %>" 
+        method="POST"
+    >
         <label for="name">Name</label>
         <input 
             type="text"
             id="name"
             name="source[name]"
+            <%= source ? `value=${source.name}` : '' %> 
         >
         <label for="url">url</label>
         <input 
             type="text"
             id="url"
             name="source[url]"
+            <%= source ? `value=${source.url}` : '' %> 
         >
         <button>Submit</button>
     </form>

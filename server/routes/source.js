@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const helpers = require('../controllers/source');
+const source = require('../controllers/source');
 
 router.route('/')
-    .get(helpers.get)
-    .post(helpers.post);
+    .get(source.get)
+    .post(source.post);
 
-router.route('/edit/:id')
-    .get(helpers.getEdit);
+router.route('/:id')
+    .get(source.getEdit)
+    .put(source.update);
 
 module.exports = router;

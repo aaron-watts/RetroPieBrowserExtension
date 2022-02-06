@@ -1,6 +1,6 @@
 const db = require('../db');
 
-module.exports.get = (req, res) => res.render('source');
+module.exports.get = (req, res) => res.render('source', { source:null });
 
 module.exports.post = async (req, res) => {
     const { source } = req.body;
@@ -13,7 +13,21 @@ module.exports.post = async (req, res) => {
 module.exports.getEdit = async (req, res) => {
     const { id } = req.params;
 
-    // db.getOne('source', id);
+    const source = await db.getOne('source', id);
 
-    res.send('Edit a Source');
+    res.render('source', { source });
 };
+
+module.exports.update = async (req, res) => {
+    const { id } = req.params;
+    const { source } = req.body;
+
+    const data = {
+        id,
+        ...source
+    };
+
+    const updated = await db.updateOne('source', data);
+    
+    return res.redirect('/');
+}
