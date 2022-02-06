@@ -1,0 +1,44 @@
+@font-face {
+    font-family: genos;
+    src: url('/fonts/genos/Genos-VariableFont_wght.ttf');
+}
+
+:root {
+    font-family: "genos", sans-serif;
+    font-size: 24px;
+    color: $fg-color;
+    letter-spacing: .08rem;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: $bg-color;
+}
+
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: $fg-color;
+}
+a:hover {
+    color: $fg-glow;
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+}
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: #4691f6;
+}
+  
+  .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}

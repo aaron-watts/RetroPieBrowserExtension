@@ -1,79 +1,13 @@
-@font-face {
-    font-family: genos;
-    src: url('/fonts/genos/Genos-VariableFont_wght.ttf');
-}
-
-$fg-color: #151583;
-$fg-accent: lighten($fg-color, 10%);
-$fg-glow: lighten($fg-color, 25%);
-$bg-color: #e6e6e6;
-$card-bg: #f2f2f2;
-$dot-size: .25rem;
-$btn-size: 2rem;
-$toggle-width: 2.5rem;
-
-:root {
-    font-family: "genos", sans-serif;
-    font-size: 24px;
-    color: $fg-color;
-    letter-spacing: .08rem;
-}
-
-a {
-    text-decoration: none;
-}
-a:visited {
-    color: $fg-color;
-}
-a:hover {
-    color: $fg-glow;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background: $bg-color;
-}
-
-.svg-icon {
-    width: 1em;
-    height: 1em;
-  }
-  
-  .svg-icon path,
-  .svg-icon polygon,
-  .svg-icon rect {
-    fill: #4691f6;
-  }
-  
-  .svg-icon circle {
-    stroke: #4691f6;
-    stroke-width: 1;
-  }
-
-.btn {
-    // height: $btn-size;
-
-    &-fill {
-        margin: 0;
-    }
-
-    &-round {
-        border-radius: 50%;
-        width: $btn-size;
-    }
-}
+@import 'var';
+@import 'config';
 
 .source {
     background: $card-bg;
-    margin: 1rem;
-    padding: 0 .5rem;
-    display: flex;
     border-radius: .2rem;
-    // justify-content: space-between;
-
-
+    display: flex;
+    margin: 1rem;
+    padding: $pd-lr;
+    
     & .name {
         margin: 0;
     }
@@ -83,61 +17,52 @@ body {
     }
 
     & .options {
-        background: $card-bg;
-        align-self: center;
-        margin-left: auto;
-        display: flex;
-        justify-content: center;
         align-items: center;
-        position: relative;
+        align-self: center;
+        background: $card-bg;
+        display: flex;
         flex-direction: row-reverse;
-        width: $toggle-width;
-        // border: 1px solid $fg-color;
         height: $btn-size;
+        justify-content: center;
+        margin-left: auto;
+        position: relative;
+        width: $toggle-width;
 
-        &.show {
-            border-left: none;
+        &.show {            
             & .menu{
                 transform: scaleX(1);
             }
-
-            // & .dot {
-            //     &::before
-            // }
         }
 
         & .menu {
-            position: absolute;
             background: $card-bg;
-            right: $toggle-width;
-            transform-origin: right;
-            // border: 1px solid $fg-color;
             border-right: none;
-            height: inherit;
             display: flex;
+            height: inherit;
             justify-content: space-between;
-            
+            position: absolute;
+            right: $toggle-width;
             transform: scaleX(0);
+            transform-origin: right;
             transition: transform .3s 0s ease-in-out;
 
             & form,
             & a {
                 display: flex;
-                padding: 0 .5rem;
-                margin: 0 .5rem;
+                margin: $pd-lr;
+                padding: $pd-lr;
             }
 
             & :is(button, a) {
-                box-sizing: border-box;
-                display: flex;
                 align-items: center;
-                justify-content: center;
-                border: none;
                 background: none;
-                cursor: pointer;
-                height: 100%;
-                padding: auto;
+                border: none;
                 border-radius: none;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                padding: auto;  
                 text-align: center;
                 vertical-align: center;
 
@@ -148,24 +73,16 @@ body {
                 }
 
                 &.edit {
-                    color: #66aa66;
+                    color: $green;
                 }
 
                 &.delete {
-                    color: #bb4444;
+                    color: $red;
                 }
             }
-
-            
-
-            // &.show {
-            //     transform: scaleX(1);
-            // }
         }
 
         &:hover {
-            background: $bg-color;
-
             & .dot,
             & .dot::before,
             & .dot::after {
@@ -195,10 +112,10 @@ body {
             }
 
             &::before {
-                transform: translateY(-.5rem);
+                transform: translateY($dot-offset);
             }
             &::after {
-                transform: translateY(.5rem)
+                transform: translateY(-$dot-offset)
             }
         }
     }
