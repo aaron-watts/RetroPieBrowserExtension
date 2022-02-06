@@ -47,16 +47,24 @@
                 </a>
             </div>
         
-            <div class="options btn btn-round">
-                <div class="dot"></div>
+            <div class="options btn">
+                <div class="dot">
+                    <div></div>
+                </div>
                 <div class="menu">
-                    <a href="/source/<%= source.id %>">Edit</a>
+                    <a class="edit" href="/source/<%= source.id %>">
+                        <%- include('icons/pencil-square.svg') %>
+                        <!-- <img class="edit" src="/icons/pencil-square.svg" alt=""> -->
+                    </a>
                     <form 
                         action="/source/<%= source.id %>?_method=DELETE"
                         method="POST"
                         class="delete"
                     >
-                        <button type="submit">Delete</button>
+                        <button class="delete" type="submit">
+                            <%- include('icons/trash3.svg') %>
+                            <!-- <img src="/icons/trash3.svg" alt=""> -->
+                        </button>
                     </form>
                 </div>
             </div>

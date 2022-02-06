@@ -46,9 +46,8 @@ body {
   stroke-width: 1;
 }
 
-.btn {
-  cursor: pointer;
-  height: 2rem;
+.btn-fill {
+  margin: 0;
 }
 
 .btn-round {
@@ -89,6 +88,16 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  width: 2.5rem;
+  height: 2rem;
+}
+
+.source .options.show {
+  border-left: none;
 }
 
 .source .options.show .menu {
@@ -98,11 +107,71 @@ body {
 
 .source .options .menu {
   position: absolute;
-  right: 3rem;
+  background: #f2f2f2;
+  right: 2.5rem;
   -webkit-transform-origin: right;
           transform-origin: right;
+  border-right: none;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
+  -webkit-transition: -webkit-transform .3s 0s ease-in-out;
+  transition: -webkit-transform .3s 0s ease-in-out;
+  transition: transform .3s 0s ease-in-out;
+  transition: transform .3s 0s ease-in-out, -webkit-transform .3s 0s ease-in-out;
+}
+
+.source .options .menu form,
+.source .options .menu a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 .5rem;
+  margin: 0 .5rem;
+}
+
+.source .options .menu :is(button, a) {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 100%;
+  padding: auto;
+  border-radius: none;
+  text-align: center;
+  vertical-align: center;
+}
+
+.source .options .menu :is(button, a) svg {
+  height: 28px;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.source .options .menu :is(button, a).edit {
+  color: #66aa66;
+}
+
+.source .options .menu :is(button, a).delete {
+  color: #bb4444;
 }
 
 .source .options:hover {
@@ -113,6 +182,8 @@ body {
 .source .options:hover .dot::before,
 .source .options:hover .dot::after {
   background: #3838df;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .source .options .dot {
@@ -121,25 +192,31 @@ body {
   width: 0.25rem;
   border-radius: 50%;
   position: relative;
+  margin: 0 1rem;
+}
+
+.source .options .dot::before, .source .options .dot::after {
+  content: '';
+  background: #151583;
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-transition: -webkit-transform .6s 0s ease-in-out;
+  transition: -webkit-transform .6s 0s ease-in-out;
+  transition: transform .6s 0s ease-in-out;
+  transition: transform .6s 0s ease-in-out, -webkit-transform .6s 0s ease-in-out;
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 
 .source .options .dot::before {
-  content: '';
-  background: #151583;
-  height: 0.25rem;
-  width: 0.25rem;
-  border-radius: 50%;
-  position: absolute;
-  top: -.4rem;
+  -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
 }
 
 .source .options .dot::after {
-  content: '';
-  background: #151583;
-  height: 0.25rem;
-  width: 0.25rem;
-  border-radius: 50%;
-  position: absolute;
-  top: .4rem;
+  -webkit-transform: translateY(0.5rem);
+          transform: translateY(0.5rem);
 }
 /*# sourceMappingURL=main.css.map */
