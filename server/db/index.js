@@ -24,24 +24,25 @@ module.exports.addOne = async (table, data) => {
     const fields = Object.keys(data);
     const query = /* sql */`INSERT INTO ${table} ${formatQuery(fields)}`;
 
-    const result = await db.run(query, fields.map(i => data[i]));
+    return await db.run(query, fields.map(i => data[i]));
 };
 
-module.exports.getData = async (table) => {
+module.exports.getAll = async (table) => {
     const db = await dbPromise;
     const query = /* sql */`SELECT * FROM ${table}`
 
     return await db.all(query);
-}
+};
 
 module.exports.getOne = async (table, id) => {
     const db = await dbPromise;
     const query = /* sql */`
         SELECT * FROM ${table} 
-        WHERE id = :id`;
+        WHERE id = :id
+    `;
 
     return await db.get(query, {':id' : id});
-}
+};
 
 module.exports.updateOne = async (table, _data) => {
     const db = await dbPromise;
@@ -53,7 +54,18 @@ module.exports.updateOne = async (table, _data) => {
     const query = /* sql */`
         UPDATE ${table} 
         SET name = :name, url = :url 
-        WHERE id = :id`;
+        WHERE id = :id
+    `;
 
-    return await db.run(query, data);
-}
+    return await db.run(query, data);;
+};
+
+module.exports.deleteOne = async (table, id) => {
+    const db = await dbPromise;
+    const query = /* sql */`
+        DELETE FROM ${table}
+        WHERE id = :id
+    `;
+
+    return await db.run(query, { ':id' : id });
+};

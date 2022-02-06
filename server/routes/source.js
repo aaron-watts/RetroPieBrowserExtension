@@ -8,6 +8,7 @@ router.route('/')
 
 router.route('/:id')
     .get(source.getEdit)
-    .put(source.update);
+    .put(source.update)
+    .delete(source.delete);
 
 module.exports = router;

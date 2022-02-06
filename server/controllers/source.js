@@ -30,4 +30,12 @@ module.exports.update = async (req, res) => {
     const updated = await db.updateOne('source', data);
     
     return res.redirect('/');
-}
+};
+
+module.exports.delete = async (req, res) => {
+    const { id } = req.params;
+    
+    const result = await db.deleteOne('source', id)
+
+    res.send(result);
+};

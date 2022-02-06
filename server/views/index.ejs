@@ -51,7 +51,12 @@
                 <div class="dot"></div>
                 <div class="menu">
                     <a href="/source/<%= source.id %>">Edit</a>
-                    <a href="">Delete</a>
+                    <form 
+                        action="/source/<%= source.id %>?_method=DELETE"
+                        method="POST"
+                    >
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>

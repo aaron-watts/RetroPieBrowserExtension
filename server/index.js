@@ -26,7 +26,7 @@ app.use('/source', sourceRoute);
 app.get('/', async (req, res) => {
     const db = require('./db');
 
-    const sources = await db.getData('source');
+    const sources = await db.getAll('source');
 
     res.render('index', { sources });
 });
