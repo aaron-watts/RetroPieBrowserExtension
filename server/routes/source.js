@@ -6,7 +6,7 @@ router.route('/')
     .get(helpers.get)
     .post(helpers.post);
 
-router.route('/edit')
-    .get((req, res) => res.send('Edit a Source'))
+router.route('/edit/:id')
+    .get(helpers.getEdit);
 
 module.exports = router;

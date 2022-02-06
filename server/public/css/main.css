@@ -30,6 +30,22 @@ body {
   background: #e6e6e6;
 }
 
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #4691f6;
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+
 .btn {
   cursor: pointer;
   height: 2rem;
@@ -72,6 +88,21 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+}
+
+.source .options.show .menu {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.source .options .menu {
+  position: absolute;
+  right: 3rem;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
 }
 
 .source .options:hover {

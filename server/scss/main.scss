@@ -35,6 +35,22 @@ body {
     background: $bg-color;
 }
 
+.svg-icon {
+    width: 1em;
+    height: 1em;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: #4691f6;
+  }
+  
+  .svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+  }
+
 .btn {
     cursor: pointer;
     height: $btn-size;
@@ -69,6 +85,28 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+
+        &.show {
+            & .menu{
+                transform: scaleX(1);
+            }
+
+            // & .dot {
+            //     &::before
+            // }
+        }
+
+        & .menu {
+            position: absolute;
+            right: 3rem;
+            transform-origin: right;
+            transform: scaleX(0);
+
+            // &.show {
+            //     transform: scaleX(1);
+            // }
+        }
 
         &:hover {
             background: $bg-color;
