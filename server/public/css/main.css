@@ -170,6 +170,7 @@ a:hover {
 
 .source .options .dot {
   background: #1c1caf;
+  cursor: pointer;
   height: 0.25rem;
   width: 0.25rem;
   border-radius: 50%;

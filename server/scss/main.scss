@@ -93,6 +93,7 @@
 
         & .dot {
             background: $fg-accent;
+            cursor: pointer;
             height: $dot-size;
             width: $dot-size;
             border-radius: 50%;
